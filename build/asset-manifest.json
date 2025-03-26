@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/NursingScenarioEditor/static/css/main.33f9a832.css",
+    "main.js": "/NursingScenarioEditor/static/js/main.4030a0f6.js",
+    "index.html": "/NursingScenarioEditor/index.html",
+    "main.33f9a832.css.map": "/NursingScenarioEditor/static/css/main.33f9a832.css.map",
+    "main.4030a0f6.js.map": "/NursingScenarioEditor/static/js/main.4030a0f6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.33f9a832.css",
+    "static/js/main.4030a0f6.js"
+  ]
+}
