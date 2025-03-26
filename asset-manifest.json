@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/NursingScenarioEditor/static/css/main.22c2de5b.css",
-    "main.js": "/NursingScenarioEditor/static/js/main.3b3d3f64.js",
+    "main.js": "/NursingScenarioEditor/static/js/main.bfe35e4c.js",
     "index.html": "/NursingScenarioEditor/index.html",
     "main.22c2de5b.css.map": "/NursingScenarioEditor/static/css/main.22c2de5b.css.map",
-    "main.3b3d3f64.js.map": "/NursingScenarioEditor/static/js/main.3b3d3f64.js.map"
+    "main.bfe35e4c.js.map": "/NursingScenarioEditor/static/js/main.bfe35e4c.js.map"
   },
   "entrypoints": [
     "static/css/main.22c2de5b.css",
-    "static/js/main.3b3d3f64.js"
+    "static/js/main.bfe35e4c.js"
   ]
 }
