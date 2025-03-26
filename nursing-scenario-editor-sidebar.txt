@@ -1,0 +1,25 @@
+import React from 'react';
+import { NursingNodeData } from '../types/NursingNodeTypes';
+
+interface NodeSidebarProps {
+  onAddNode: (type: NursingNodeData['type']) => void;
+}
+
+export const NodeSidebar: React.FC<NodeSidebarProps> = ({ onAddNode }) => {
+  const nodeTypes: NursingNodeData['type'][] = ['story', 'choice', 'condition', 'procedure'];
+
+  return (
+    <div className="w-64 bg-gray-100 p-4 space-y-2">
+      <h2 className="font-bold text-lg mb-4">Node Types</h2>
+      {nodeTypes.map((type) => (
+        <button 
+          key={type} 
+          onClick={() => onAddNode(type)}
+          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600 capitalize"
+        >
+          Add {type} Node
+        </button>
+      ))}
+    </div>
+  );
+};

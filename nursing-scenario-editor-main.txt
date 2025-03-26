@@ -1,0 +1,79 @@
+import React, { useState, useCallback } from 'react';
+import ReactFlow, { 
+  ReactFlowProvider, 
+  addEdge, 
+  Background, 
+  Controls, 
+  Node, 
+  Edge, 
+  Connection, 
+  NodeProps 
+} from 'reactflow';
+import 'reactflow/dist/style.css';
+
+import { StoryNode } from './components/nodes/StoryNode';
+import { ChoiceNode } from './components/nodes/ChoiceNode';
+import { ConditionNode } from './components/nodes/ConditionNode';
+import { ProcedureNode } from './components/nodes/ProcedureNode';
+import { NodeSidebar } from './components/NodeSidebar';
+import { NursingNodeData } from './types/NursingNodeTypes';
+
+const nodeTypes = {
+  story: StoryNode,
+  choice: ChoiceNode,
+  condition: ConditionNode,
+  procedure: ProcedureNode
+};
+
+const NursingScenarioEditor: React.FC = () => {
+  const [nodes, setNodes] = useState<Node<NursingNodeData>[]>([]);
+  const [edges, setEdges] = useState<Edge[]>([]);
+
+  const handleAddNode = useCallback((type: NursingNodeData['type']) => {
+    const newNode: Node<NursingNodeData> = {
+      id: `node_${Date.now()}`,
+      type,
+      position: { 
+        x: Math.random() * 500, 
+        y: Math.random() * 500 
+      },
+      data: {
+        id: `node_${Date.now()}`,
+        title: `New ${type} Node`,
+        type,
+        ...(type === 'choice' && { choices: [] }),
+        ...(type === 'procedure' && { steps: [] }),
+        ...(type === 'condition' && { condition: '' })
+      } as NursingNodeData
+    };
+
+    setNodes((prev) => [...prev, newNode]);
+  }, []);
+
+  const onConnect = useCallback((connection: Connection) => {
+    setEdges((eds) => addEdge(connection, eds));
+  }, []);
+
+  return (
+    <div className="h-screen flex">
+      <NodeSidebar onAddNode={handleAddNode} />
+      
+      <div className="flex-grow">
+        <ReactFlowProvider>
+          <ReactFlow
+            nodes={nodes}
+            edges={edges}
+            onConnect={onConnect}
+            nodeTypes={nodeTypes}
+            fitView
+          >
+            <Background />
+            <Controls />
+          </ReactFlow>
+        </ReactFlowProvider>
+      </div>
+    </div>
+  );
+};
+
+export default NursingScenarioEditor;
